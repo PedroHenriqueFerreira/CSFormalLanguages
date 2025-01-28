@@ -1,0 +1,9 @@
+S -> E
+A -> λ
+A -> +TA
+B -> λ
+B -> *FB
+E -> TA
+F -> (E)
+F -> a
+T -> FB

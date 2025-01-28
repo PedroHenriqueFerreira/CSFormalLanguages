@@ -11,7 +11,7 @@ class Utils:
 		f, res, dir = None, '', getcwd() + '\\'
   
 		try:
-			f = open(dir + file_name, 'r')
+			f = open(dir + file_name, 'r', encoding='UTF-8')
 			res = f.read()
    
 		except FileNotFoundError:
@@ -27,7 +27,7 @@ class Utils:
 		f, dir = None, getcwd() + '\\'
   
 		try:
-			f = open(dir + file_name, 'w')
+			f = open(dir + file_name, 'w', encoding='UTF-8')
 			f.write(content)
    
 		except Exception as e:

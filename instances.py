@@ -4,6 +4,81 @@ from pda import PDA
 
 class Instances:
     @staticmethod
+    def fromGrammar(file_name: str, w: str):
+        # Lendo arquivo
+        
+        grammar = Utils.readFile(file_name)
+    
+        start = ''
+    
+        rules: list[tuple[str, str]] = []
+        esq: set[str] = set()
+        dir: set[str] = set()
+        
+        for rule in grammar.split('\n'):
+            e, d = rule.split('->')
+            e, d = e.strip(), d.strip()
+            
+            if len(e) != 1:
+                raise Exception('Gramática inválida')
+
+            if not start:
+                start = e
+
+            rules.append((e, d))
+            esq.add(e)
+            dir.update(c for c in d if c != 'λ')
+        
+        dir = dir - esq
+        
+        # Criando PDA
+        
+        q0 = State('q0')
+        q1 = State('q1')
+        q2 = State('q2')
+        qf = State('qf')
+        
+        qf.setFinal()
+        
+        q0.addTransition(q1, None, None, '$')
+        q1.addTransition(q2, None, None, start)
+        
+        counter = 3
+        
+        for rule in rules:
+            if rule[1] == 'λ':
+                q2.addTransition(q2, None, rule[0], None)
+                continue
+            
+            state = q2
+            
+            if len(rule[1]) > 1:
+                state = State(f'q{counter}')
+                counter += 1
+            
+            q2.addTransition(state, None, rule[0], rule[1][-1])
+            
+            for c in rule[1][1:-1][::-1]:
+                new_state = State(f'q{counter}')
+                counter += 1
+                
+                state.addTransition(new_state, None, None, c)
+                
+                state = new_state
+            
+            if len(rule[1]) > 1:
+                state.addTransition(q2, None, None, rule[1][0])
+    
+        for d in dir:
+            q2.addTransition(q2, d, d, None)
+   
+        q2.addTransition(qf, None, '$', None)
+        
+        pda = PDA(q0)
+        pda.makeLog()
+        Utils.checkout(pda.run(w),w)
+    
+    @staticmethod
     def enquanto(w: str):
         # S -> lambda
         # S -> eqt(a){S}S
@@ -60,7 +135,7 @@ class Instances:
     staticmethod
     def se(w: str):
         # S -> se(a){S}TUS
-        # S -> lambda
+        # S -> lambda   
         # T -> senaose(a){S}T
         # T -> lambda
         # U -> senao{S}

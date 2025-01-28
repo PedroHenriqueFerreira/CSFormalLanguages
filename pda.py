@@ -22,7 +22,9 @@ class PDA:
         transitions.update(self.q.transitions(c, pop))
         
         if self.log:
-            print(f'{w!r}', self._pilha, transitions)
+            print(f'{self.q.name}: {w}')
+            print("".join(self._pilha))
+            print('-' * 40)
         
         for transition in transitions:
             pda = PDA(transition.state)

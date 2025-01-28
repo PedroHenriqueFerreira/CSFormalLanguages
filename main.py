@@ -15,3 +15,12 @@ if __name__ == "__main__":
     
     Instances.se('se(a){se(a){}}senaose(a){}senao{}')
     Instances.se('se(a){se(a){}}senaose(a){}senao{{')
+
+    # Instances.fromGrammar('grammars/g1.txt', '000111')
+    # Instances.fromGrammar('grammars/g1.txt', '000110')
+    
+    # Instances.fromGrammar('grammars/g2.txt', '(a+a)*(a+a)+(a*a)')
+    # Instances.fromGrammar('grammars/g2.txt', '(a+))*(a+a)+(a*a)')
+    
+    # Instances.fromGrammar('grammars/g3.txt', '(a+a)*(a+a)+(a*a)')
+    # Instances.fromGrammar('grammars/g3.txt', '((a+))*(a+a)+(a*a))')
