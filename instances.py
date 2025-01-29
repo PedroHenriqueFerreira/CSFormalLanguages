@@ -93,7 +93,7 @@ class Instances:
         
         elapsed = time() - elapsed
         
-        print(f'Tempo gasto: {elapsed:.3f}s')
+        print(f'Tempo gasto: {elapsed:.5f}s')
     
     @staticmethod
     def enquanto(w: str):
@@ -154,7 +154,7 @@ class Instances:
         
         elapsed = time() - elapsed
         
-        print(f'Tempo gasto: {elapsed:.3f}s')
+        print(f'Tempo gasto: {elapsed:.5f}s')
          
     staticmethod
     def se(w: str):
@@ -276,7 +276,7 @@ class Instances:
         
         elapsed = time() - elapsed
         
-        print(f'Tempo gasto: {elapsed:.3f}s')
+        print(f'Tempo gasto: {elapsed:.5f}s')
             
     @staticmethod
     def calc(w: str):
@@ -344,7 +344,7 @@ class Instances:
         
         elapsed = time() - elapsed
         
-        print(f'Tempo gasto: {elapsed:.3f}s')
+        print(f'Tempo gasto: {elapsed:.5f}s')
 
     @staticmethod
     def teste_y_x(w): # L = { w in Σ^* | w é um número binario multiplo de 3}
@@ -369,7 +369,7 @@ class Instances:
         
         elapsed = time() - elapsed
         
-        print(f'Tempo gasto: {elapsed:.3f}s')
+        print(f'Tempo gasto: {elapsed:.5f}s')
 
     @staticmethod
     def reverso(w): #L = { ww^R | w in Σ^*={0,1}}
@@ -396,4 +396,4 @@ class Instances:
         
         elapsed = time() - elapsed
         
-        print(f'Tempo gasto: {elapsed:.3f}s')
+        print(f'Tempo gasto: {elapsed:.5f}s')

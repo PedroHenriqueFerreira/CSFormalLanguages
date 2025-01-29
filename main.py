@@ -10,12 +10,6 @@ if __name__ == "__main__":
     Instances.calc('a*a+(a+a)')
     Instances.calc('a*a+(a+a(')
     
-    Instances.enquanto('eqt(a){eqt(a){}}')
-    Instances.enquanto('eqt(a){eqt(a){}{')
-    
-    Instances.se('se(a){se(a){}}senaose(a){}senao{}')
-    Instances.se('se(a){se(a){}}senaose(a){}senao{{')
-
     Instances.fromGrammar('grammars/g1.txt', '000111')
     Instances.fromGrammar('grammars/g1.txt', '000110')
     
