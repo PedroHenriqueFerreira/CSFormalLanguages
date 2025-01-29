@@ -147,7 +147,14 @@ class Instances:
         q2.addTransition(qf, None, '$', None)
         
         pda = PDA(q0)
+        
+        elapsed = time()
+        
         Utils.checkout(pda.run(w),w)
+        
+        elapsed = time() - elapsed
+        
+        print(f'Tempo gasto: {elapsed:.3f}s')
          
     staticmethod
     def se(w: str):
@@ -262,7 +269,14 @@ class Instances:
         q2.addTransition(qf, None, '$', None)
         
         pda = PDA(q0)
+        
+        elapsed = time()
+        
         Utils.checkout(pda.run(w),w)
+        
+        elapsed = time() - elapsed
+        
+        print(f'Tempo gasto: {elapsed:.3f}s')
             
     @staticmethod
     def calc(w: str):
@@ -323,7 +337,14 @@ class Instances:
         q2.addTransition(qf, None, '$', None)
 
         pda = PDA(q0)
+        
+        elapsed = time()
+        
         Utils.checkout(pda.run(w),w)
+        
+        elapsed = time() - elapsed
+        
+        print(f'Tempo gasto: {elapsed:.3f}s')
 
     @staticmethod
     def teste_y_x(w): # L = { w in Σ^* | w é um número binario multiplo de 3}
@@ -341,6 +362,9 @@ class Instances:
 
         pda = PDA(q0)
         b = pda.run(w)
+        
+        elapsed = time()
+        
         Utils.checkout(b, w)
 
     @staticmethod
@@ -361,4 +385,11 @@ class Instances:
 
         pda = PDA(q1)
         b = pda.run(w)
+        
+        elapsed = time()
+        
         Utils.checkout(b,w)
+        
+        elapsed = time() - elapsed
+        
+        print(f'Tempo gasto: {elapsed:.3f}s')
