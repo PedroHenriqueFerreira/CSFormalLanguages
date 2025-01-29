@@ -1,5 +1,8 @@
 from instances import Instances
 
+from sys import setrecursionlimit
+setrecursionlimit(10**6)
+
 if __name__ == "__main__": 
     Instances.teste_y_x('00001111')
     Instances.teste_y_x('00000001')
