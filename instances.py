@@ -366,6 +366,10 @@ class Instances:
         elapsed = time()
         
         Utils.checkout(b, w)
+        
+        elapsed = time() - elapsed
+        
+        print(f'Tempo gasto: {elapsed:.3f}s')
 
     @staticmethod
     def reverso(w): #L = { ww^R | w in Σ^*={0,1}}
