@@ -2,9 +2,11 @@ from state import State
 from utils import Utils
 from pda import PDA
 
+from time import time
+
 class Instances:
     @staticmethod
-    def fromGrammar(file_name: str, w: str):
+    def fromGrammar(file_name: str, w: str, log = False):
         # Lendo arquivo
         
         grammar = Utils.readFile(file_name)
@@ -25,9 +27,15 @@ class Instances:
             if not start:
                 start = e
 
-            rules.append((e, d))
-            esq.add(e)
-            dir.update(c for c in d if c != 'λ')
+            for i in d.split('|'):
+                dd = i.strip()
+                
+                if not dd:
+                    continue
+                
+                rules.append((e, dd))
+                esq.add(e)
+                dir.update(c for c in dd if c != 'λ')
         
         dir = dir - esq
         
@@ -75,12 +83,21 @@ class Instances:
         q2.addTransition(qf, None, '$', None)
         
         pda = PDA(q0)
-        pda.makeLog()
+        
+        if log:
+            pda.makeLog()
+        
+        elapsed = time()
+        
         Utils.checkout(pda.run(w),w)
+        
+        elapsed = time() - elapsed
+        
+        print(f'Tempo gasto: {elapsed:.3f}s')
     
     @staticmethod
     def enquanto(w: str):
-        # S -> lambda
+        # S -> λ
         # S -> eqt(a){S}S
     
         q0 = State('q0')
@@ -115,7 +132,7 @@ class Instances:
         qi.addTransition(qj, None, None, 'q')
         qj.addTransition(q2, None, None, 'e')
         
-        # S -> lambda
+        # S -> λ
         q2.addTransition(q2, None, 'S', None)
         
         q2.addTransition(q2, 'e', 'e', None)
@@ -135,11 +152,11 @@ class Instances:
     staticmethod
     def se(w: str):
         # S -> se(a){S}TUS
-        # S -> lambda   
+        # S -> λ   
         # T -> senaose(a){S}T
-        # T -> lambda
+        # T -> λ
         # U -> senao{S}
-        # U -> lambda
+        # U -> λ
         
         q0 = State('q0')
         q1 = State('q1')
@@ -197,7 +214,7 @@ class Instances:
         qj.addTransition(qk, None, None, 'e')
         qk.addTransition(q2, None, None, 's')
         
-        # S -> lambda
+        # S -> λ
         q2.addTransition(q2, None, 'S', None)
         
         # T -> senaose(a){S}T
@@ -216,7 +233,7 @@ class Instances:
         qx.addTransition(qy, None, None, 'e')
         qy.addTransition(q2, None, None, 's')
         
-        # T -> lambda
+        # T -> λ
         q2.addTransition(q2, None, 'T', None)
         
         # U -> senao{S}
@@ -229,7 +246,7 @@ class Instances:
         qff.addTransition(qgg, None, None, 'e')
         qgg.addTransition(q2, None, None, 's')
         
-        # U -> lambda
+        # U -> λ
         q2.addTransition(q2, None, 'U', None)
         
         q2.addTransition(q2, 's', 's', None)

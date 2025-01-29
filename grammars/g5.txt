@@ -1,0 +1,6 @@
+S -> se(a){S}TUS
+S -> λ
+T -> senaose(a){S}T
+T -> λ
+U -> senao{S}
+U -> λ

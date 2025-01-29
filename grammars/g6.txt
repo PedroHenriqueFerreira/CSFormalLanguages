@@ -1,0 +1,10 @@
+S -> FN
+S -> λ
+F -> func(P)
+N -> ;S
+N -> λ
+P -> Ia
+P -> IF
+I -> a,I
+I -> F,I
+I -> λ

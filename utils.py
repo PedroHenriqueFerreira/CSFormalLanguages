@@ -1,5 +1,3 @@
-from os import getcwd
-
 class Utils:
 	@staticmethod
 	def checkout(b: bool, w: str): 
@@ -8,10 +6,10 @@ class Utils:
   
 	@staticmethod
 	def readFile(file_name: str):
-		f, res, dir = None, '', getcwd() + '\\'
+		f, res = None, ''
   
 		try:
-			f = open(dir + file_name, 'r', encoding='UTF-8')
+			f = open(file_name, 'r', encoding='UTF-8')
 			res = f.read()
    
 		except FileNotFoundError:
@@ -24,10 +22,10 @@ class Utils:
 
 	@staticmethod
 	def writeFile(file_name: str, content: str): 
-		f, dir = None, getcwd() + '\\'
+		f = None
   
 		try:
-			f = open(dir + file_name, 'w', encoding='UTF-8')
+			f = open(file_name, 'w', encoding='UTF-8')
 			f.write(content)
    
 		except Exception as e:
